@@ -1,505 +1,129 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Abhinav Chandran P K — Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Abhinav Chandran PK - Full Stack .NET Developer Portfolio">
+  <title>Abhinav Chandran PK | .NET Developer</title>
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-
-  <style>
-    :root{
-      --bg-1: #030416;
-      --bg-2: #071033;
-      --glass: rgba(255,255,255,0.06);
-      --glass-2: rgba(255,255,255,0.04);
-      --muted: rgba(255,255,255,0.7);
-      --accent-1: #7c5cff; /* purple */
-      --accent-2: #00d4ff; /* cyan */
-      --accent-glow: 0 8px 30px rgba(124,92,255,0.14);
-      --card-radius: 16px;
-      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-    }
-
-    /* Reset */
-    *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%}
-    body{
-      background: radial-gradient(1200px 600px at 10% 10%, rgba(124,92,255,0.14), transparent 10%),
-                  radial-gradient(900px 500px at 90% 90%, rgba(0,212,255,0.08), transparent 12%),
-                  linear-gradient(180deg,var(--bg-1), var(--bg-2));
-      color: #e8eefc;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      padding:28px;
-      display:flex;
-      justify-content:center;
-      align-items:flex-start;
-      gap:20px;
-      font-size:16px;
-      line-height:1.55;
-    }
-
-    .wrap{
-      width:100%;
-      max-width:1100px;
-      margin: 12px auto;
-      position:relative;
-    }
-
-    /* subtle floating particles (canvas below) */
-    #particles {
-      position:absolute;
-      inset:0;
-      z-index:0;
-      pointer-events:none;
-      opacity:0.42;
-      mix-blend-mode:screen;
-    }
-
-    /* Header */
-    header{
-      position:relative;
-      z-index:2;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:18px;
-      margin-bottom:18px;
-    }
-    .logo{
-      display:flex;
-      flex-direction:column;
-      gap:2px;
-    }
-    .logo .name{
-      font-weight:700;
-      letter-spacing:0.2px;
-      font-size:20px;
-      color: white;
-    }
-    .logo .role{
-      color: rgba(255,255,255,0.65);
-      font-size:12px;
-      font-weight:500;
-      font-family: "JetBrains Mono", monospace;
-    }
-    nav ul{display:flex;gap:14px;list-style:none}
-    nav a{
-      color: rgba(255,255,255,0.68);
-      text-decoration:none;
-      padding:8px 10px;
-      border-radius:8px;
-      font-weight:600;
-      font-size:14px;
-      transition: all .15s ease;
-      backdrop-filter: blur(6px);
-    }
-    nav a:hover{ color:white; transform:translateY(-3px) }
-
-    /* Main hero area */
-    .hero {
-      display:grid;
-      grid-template-columns: 1fr 340px;
-      gap:22px;
-      align-items:start;
-      z-index:2;
-    }
-
-    .hero-card{
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border-radius: var(--card-radius);
-      padding:28px;
-      box-shadow: 0 10px 30px rgba(2,6,23,0.6), var(--accent-glow);
-      backdrop-filter: blur(10px) saturate(120%);
-      border: 1px solid rgba(255,255,255,0.04);
-      position:relative;
-      overflow:hidden;
-    }
-
-    .hero-left h1{
-      font-size:32px;
-      margin-bottom:6px;
-      line-height:1.02;
-    }
-    .hero-left h1 span{
-      background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
-      -webkit-background-clip:text;
-      background-clip:text;
-      color:transparent;
-    }
-    .subtitle{
-      color: rgba(255,255,255,0.7);
-      margin-bottom:16px;
-      font-size:15px;
-    }
-
-    /* Neon tags */
-    .tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
-    .tag{
-      font-family: "JetBrains Mono", monospace;
-      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
-      border-radius:10px;
-      padding:8px 10px;
-      font-size:13px;
-      color: #e6eeff;
-      border:1px solid rgba(255,255,255,0.03);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.4);
-    }
-    .tag.accent{
-      background: linear-gradient(90deg, rgba(124,92,255,0.12), rgba(0,212,255,0.08));
-      border: 1px solid rgba(124,92,255,0.22);
-      color: white;
-      box-shadow: 0 8px 28px rgba(124,92,255,0.08);
-    }
-
-    .hero-cta{display:flex;gap:12px;align-items:center}
-    .btn-ghost{
-      color:var(--accent-1);
-      background: transparent;
-      border: 1px solid rgba(124,92,255,0.14);
-      padding:10px 14px;
-      border-radius:10px;
-      font-weight:700;
-      text-decoration:none;
-      transition:transform .12s ease, box-shadow .12s ease;
-    }
-    .btn-ghost:hover{ transform:translateY(-4px); box-shadow: 0 12px 40px rgba(124,92,255,0.08) }
-
-    .btn-neon{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:10px 14px;
-      border-radius:12px;
-      background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
-      color: #041025;
-      font-weight:800;
-      text-decoration:none;
-      box-shadow: 0 10px 30px rgba(0,212,255,0.08), 0 8px 20px rgba(124,92,255,0.08);
-      transition: transform .14s ease;
-    }
-    .btn-neon:hover{ transform:translateY(-4px); filter:brightness(1.03) }
-
-    /* Right-side mini-card */
-    .mini-card{
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border-radius:12px;
-      padding:18px;
-      backdrop-filter: blur(8px);
-      border:1px solid rgba(255,255,255,0.04);
-      box-shadow: 0 8px 30px rgba(2,6,23,0.55);
-    }
-    .mini-card h4{ margin-bottom:8px; font-size:15px }
-    .skill-list{display:flex;flex-direction:column;gap:8px}
-    .skill{
-      font-family: "JetBrains Mono", monospace;
-      font-size:13px;
-      color: rgba(255,255,255,0.9);
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      padding:8px;
-      border-radius:8px;
-      border:1px solid rgba(255,255,255,0.02);
-    }
-
-    /* Sections row */
-    .sections{
-      margin-top:20px;
-      display:grid;
-      grid-template-columns: 1fr 420px;
-      gap:20px;
-    }
-
-    .card-section{
-      border-radius:14px;
-      padding:20px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border:1px solid rgba(255,255,255,0.03);
-      backdrop-filter: blur(8px);
-      box-shadow: 0 10px 30px rgba(2,6,23,0.5);
-    }
-    .section-title{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:12px;
-      margin-bottom:12px;
-    }
-    .section-title h3{ font-size:16px }
-    .muted{ color: rgba(255,255,255,0.66); font-size:14px }
-
-    /* Projects grid */
-    .projects{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:12px;
-    }
-    .project-card{
-      padding:14px;
-      border-radius:12px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));
-      border:1px solid rgba(255,255,255,0.03);
-      transition: transform .12s ease, box-shadow .12s ease;
-    }
-    .project-card:hover{ transform: translateY(-6px); box-shadow: 0 18px 60px rgba(0,0,0,0.6) }
-    .project-card h4{ margin-bottom:8px; font-size:14px }
-    .project-card p{ color: rgba(255,255,255,0.68); font-size:13px }
-    .project-link{ font-family: "JetBrains Mono", monospace; color:var(--accent-2); font-size:13px; text-decoration:none; margin-top:8px; display:inline-block }
-
-    /* Contact card */
-    .contact-form input, .contact-form textarea{
-      width:100%;
-      background: transparent;
-      border:1px solid rgba(255,255,255,0.04);
-      padding:12px;
-      color: #eaf3ff;
-      border-radius:10px;
-      font-size:14px;
-      font-family:inherit;
-      margin-bottom:10px;
-    }
-    .contact-form button{
-      padding:10px 14px;
-      border-radius:10px;
-      border:none;
-      cursor:pointer;
-      background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
-      color:#041025;
-      font-weight:700;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.45);
-    }
-
-    /* Footer */
-    footer{
-      margin-top:18px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      color: rgba(255,255,255,0.62);
-      gap:12px;
-      font-size:14px;
-    }
-
-    /* Code-ish snippet */
-    .code-block{
-      background: linear-gradient(180deg, rgba(2,6,23,0.5), rgba(2,6,23,0.6));
-      padding:12px;
-      border-radius:10px;
-      font-family: "JetBrains Mono", monospace;
-      font-size:13px;
-      color: #cfefff;
-      border:1px solid rgba(255,255,255,0.02);
-      overflow:auto;
-    }
-
-    /* small screens */
-    @media (max-width:980px){
-      .hero { grid-template-columns: 1fr; }
-      .sections { grid-template-columns: 1fr; }
-      .projects { grid-template-columns: 1fr; }
-      nav ul{display:none}
-    }
-
-    @media (max-width:520px){
-      body{ padding:16px }
-      .hero-left h1{ font-size:24px }
-    }
-
-  </style>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-  <div class="wrap">
 
-    <!-- particle canvas -->
-    <canvas id="particles"></canvas>
+<!-- NAVBAR -->
+<header>
+  <nav class="navbar">
+    <div class="logo">Abhinav</div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
 
-    <!-- Header -->
-    <header>
-      <div class="logo">
-        <div class="name">Abhinav Chandran P K</div>
-        <div class="role">ASP.NET • Full Stack • C#</div>
-      </div>
+<!-- HERO -->
+<section id="home" class="hero">
+  <h1>Hi, I'm <span>Abhinav Chandran P K</span></h1>
+  <h2>.NET Full Stack Developer</h2>
+  <p>B.Tech IT Graduate | ASP.NET | C# | SQL | Angular</p>
 
-      <nav>
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </header>
-
-    <!-- HERO -->
-    <main class="hero" id="home" role="main" aria-label="Introduction">
-      <section class="hero-card hero-left" aria-labelledby="intro-title">
-        <h1 id="intro-title">Hi, I'm <span>Abhinav Chandran P K</span></h1>
-        <div class="subtitle">ASP.NET Full Stack Developer — building maintainable backend systems and polished front-ends. Focused on clean architecture, performance, and developer ergonomics.</div>
-
-        <div class="tags" aria-hidden="true">
-          <div class="tag accent">ASP.NET</div>
-          <div class="tag">C#</div>
-          <div class="tag">MSSQL</div>
-          <div class="tag">Web API</div>
-          <div class="tag">Entity Framework</div>
-        </div>
-
-        <div class="hero-cta">
-          <a class="btn-neon" href="/mnt/data/Abhinav_Chandran_PK_DotNet_Developer.pdf" target="_blank" rel="noopener noreferrer" aria-label="Download résumé">
-            Download Résumé
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12" stroke="#041025" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 11l4 4 4-4" stroke="#041025" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 21H4" stroke="#041025" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-
-          <a class="btn-ghost" href="#projects">See Projects</a>
-        </div>
-
-        <div style="margin-top:18px">
-          <div class="code-block" aria-hidden="true">
-<span style="color:#9be7ff">// Selected profile</span><br>
-<span style="color:#b9d6ff">public class</span> Developer { <span style="color:#9be7ff">// Abhinav Chandran P K</span><br>
-&nbsp;&nbsp;<span style="color:#b9d6ff">public string</span> Focus = <span style="color:#ffd6a5">'ASP.NET, C#'</span>;<br>
-&nbsp;&nbsp;<span style="color:#b9d6ff">public string</span> Motto = <span style="color:#ffd6a5">'Clean. Scalable. Practical.'</span>;<br>
-}
-          </div>
-        </div>
-      </section>
-
-      <aside class="mini-card" aria-label="Key skills & summary">
-        <h4>Quick Snapshot</h4>
-        <p class="muted">ASP.NET Full Stack Intern · B.Tech IT · Production-focused</p>
-
-        <div style="height:10px"></div>
-        <div class="skill-list">
-          <div class="skill">ASP.NET • Web API • MVC</div>
-          <div class="skill">C# • Entity Framework • LINQ</div>
-          <div class="skill">MSSQL • Stored Procedures</div>
-          <div class="skill">HTML • CSS • JavaScript • Bootstrap</div>
-          <div class="skill">Python (Django) • Flutter (mobile)</div>
-        </div>
-      </aside>
-    </main>
-
-    <!-- Sections: Projects & Contact -->
-    <section class="sections" aria-label="Projects and contact">
-      <!-- Left: Projects -->
-      <div class="card-section" id="projects">
-        <div class="section-title">
-          <h3>Highlighted Projects</h3>
-          <div class="muted">Selected work & links</div>
-        </div>
-
-        <div class="projects">
-          <div class="project-card">
-            <h4>E-Commerce Web Application</h4>
-            <p>Complete ASP.NET Web Forms solution with authentication, product & order management, and SQL Server integration for production workflows.</p>
-            <a class="project-link" href="https://github.com/ABHINAV7592/EcommerceApplication.git" target="_blank" rel="noopener noreferrer">github.com/ABHINAV7592/EcommerceApplication</a>
-          </div>
-
-          <div class="project-card">
-            <h4>SMART DRIVE — Driver Assistance</h4>
-            <p>Real-time detection pipeline using Python & Django for backend processing and Flutter for mobile UX. Detects potholes, drowsiness & traffic signs; updates Google Maps.</p>
-            <a class="project-link" href="https://github.com/ABHINAV7592/SmartDrive.git" target="_blank" rel="noopener noreferrer">github.com/ABHINAV7592/SmartDrive</a>
-          </div>
-
-          <div class="project-card">
-            <h4>Hostel Mate (Android)</h4>
-            <p>Android app for hostel operations — room allocation, attendance, mess cut requests, and complaint management for students & admins.</p>
-          </div>
-
-          <div class="project-card">
-            <h4>Other Experiments</h4>
-            <p>Personal experiments with CV, real-time sockets, and integrating detection outputs to mapping services for practical applications.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Right: Contact -->
-      <aside class="card-section" id="contact" aria-label="Contact">
-        <div class="section-title">
-          <h3>Contact</h3>
-          <div class="muted">Let's build something useful</div>
-        </div>
-
-        <p class="muted">Email: <a href="mailto:abhinavchandranpk@gmail.com" style="color:var(--accent-2); text-decoration:none">abhinavchandranpk@gmail.com</a></p>
-        <p class="muted">Location: Kannur, Kerala, India</p>
-
-        <div style="height:12px"></div>
-
-        <form class="contact-form" onsubmit="event.preventDefault(); alert('Demo: message submitted — replace with your backend.');">
-          <input type="text" placeholder="Your name" required />
-          <input type="email" placeholder="Your email" required />
-          <textarea placeholder="Your message" rows="5" required></textarea>
-          <div style="display:flex;gap:8px;">
-            <button type="submit">Send Message</button>
-            <a class="btn-ghost" href="mailto:abhinavchandranpk@gmail.com">Email Direct</a>
-          </div>
-        </form>
-
-        <div style="margin-top:18px">
-          <div class="section-title" style="margin-bottom:8px">
-            <h3>Connect</h3>
-            <div class="muted">Links</div>
-          </div>
-          <div style="display:flex;flex-direction:column;gap:8px">
-            <a href="https://github.com/ABHINAV7592" target="_blank" style="color:var(--accent-2); text-decoration:none">GitHub / ABHINAV7592</a>
-            <a href="https://www.linkedin.com/in/abhinavchandranpk" target="_blank" style="color:var(--accent-2); text-decoration:none">LinkedIn / abhinavchandranpk</a>
-          </div>
-        </div>
-      </aside>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-      <div>© 2025 Abhinav Chandran P K</div>
-      <div style="display:flex;gap:12px;align-items:center">
-        <a href="https://github.com/ABHINAV7592" target="_blank" style="color:rgba(255,255,255,0.78); text-decoration:none">GitHub</a>
-        <a href="https://www.linkedin.com/in/abhinavchandranpk" target="_blank" style="color:rgba(255,255,255,0.78); text-decoration:none">LinkedIn</a>
-      </div>
-    </footer>
+  <div class="hero-buttons">
+    <a href="#projects" class="btn">View Projects</a>
+    <a href="resume.pdf" class="btn-outline" target="_blank">Download Resume</a>
   </div>
+</section>
 
-  <!-- Particle script (lightweight) -->
-  <script>
-    const canvas = document.getElementById('particles');
-    const ctx = canvas.getContext('2d');
-    let w = canvas.width = innerWidth;
-    let h = canvas.height = innerHeight;
-    const particles = [];
-    const colors = ['rgba(124,92,255,0.9)','rgba(0,212,255,0.9)','rgba(124,92,255,0.55)'];
-    const N = Math.max(18, Math.floor((w*h)/90000));
-    window.addEventListener('resize', () => { w = canvas.width = innerWidth; h = canvas.height = innerHeight; });
+<!-- ABOUT -->
+<section id="about" class="section">
+  <h2>About Me</h2>
+  <p>
+    I am a passionate B.Tech Information Technology graduate with strong
+    foundations in Object-Oriented Programming, ASP.NET, SQL Server,
+    and full-stack web development. I enjoy building scalable,
+    user-friendly applications and continuously learning new technologies.
+  </p>
+</section>
 
-    function rand(min,max){ return Math.random()*(max-min)+min; }
-    for(let i=0;i<N;i++){
-      particles.push({
-        x: rand(0,w),
-        y: rand(0,h),
-        r: rand(0.8,3.6),
-        vx: rand(-0.2,0.2),
-        vy: rand(-0.1,0.1),
-        c: colors[Math.floor(Math.random()*colors.length)],
-        life: rand(60,220)
-      });
-    }
+<!-- SKILLS -->
+<section id="skills" class="section bg-light">
+  <h2>Technical Skills</h2>
 
-    function draw(){
-      ctx.clearRect(0,0,w,h);
-      for(let p of particles){
-        ctx.beginPath();
-        ctx.fillStyle = p.c;
-        ctx.globalAlpha = 0.06 + (p.r/6);
-        ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-        ctx.fill();
-        p.x += p.vx;
-        p.y += p.vy;
-        p.life--;
-        if(p.life < 0 || p.x < -10 || p.x > w+10 || p.y < -10 || p.y > h+10){
-          p.x = rand(0,w); p.y = rand(0,h); p.life = rand(60,220);
-        }
-      }
-      requestAnimationFrame(draw);
-    }
-    draw();
-  </script>
+  <div class="skills-grid">
+    <div class="skill"><i class="fa-brands fa-microsoft"></i> ASP.NET / Core</div>
+    <div class="skill"><i class="fa-solid fa-code"></i> C# & OOP</div>
+    <div class="skill"><i class="fa-solid fa-database"></i> SQL Server</div>
+    <div class="skill"><i class="fa-brands fa-angular"></i> Angular</div>
+    <div class="skill"><i class="fa-brands fa-js"></i> JavaScript</div>
+    <div class="skill"><i class="fa-brands fa-html5"></i> HTML & CSS</div>
+    <div class="skill"><i class="fa-brands fa-git-alt"></i> Git & GitHub</div>
+    <div class="skill"><i class="fa-solid fa-laptop-code"></i> Web API</div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="section">
+  <h2>Projects</h2>
+
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <h3>TechMart – E-Commerce App</h3>
+      <p>ASP.NET MVC based e-commerce platform with authentication, cart, and order management.</p>
+      <p><strong>Tech:</strong> ASP.NET, SQL Server, Bootstrap</p>
+      <a href="https://github.com/ABHINAV7592/EcommerceApplication" target="_blank">GitHub</a>
+    </div>
+
+    <div class="project-card">
+      <h3>CareerNet – Job Portal</h3>
+      <p>Job portal allowing users to apply for jobs, manage skills, and employers to post openings.</p>
+      <p><strong>Tech:</strong> ASP.NET MVC, SQL Server</p>
+      <a href="https://github.com/ABHINAV7592/Job_Portal" target="_blank">GitHub</a>
+    </div>
+
+    <div class="project-card">
+      <h3>Web API with Angular</h3>
+      <p>CRUD application demonstrating REST API consumption using Angular HttpClient.</p>
+      <p><strong>Tech:</strong> ASP.NET Web API, Angular</p>
+      <a href="https://github.com/ABHINAV7592/ASP.NET-Web-API-With-Angular" target="_blank">GitHub</a>
+    </div>
+
+    <div class="project-card">
+      <h3>ASP.NET Core API + Angular</h3>
+      <p>Full-stack CRUD system using ASP.NET Core Web API and Angular frontend.</p>
+      <p><strong>Tech:</strong> ASP.NET Core, Angular, SQL Server</p>
+      <a href="https://github.com/ABHINAV7592/ASP.NET-Core-Web-API-With-Angular" target="_blank">GitHub</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section bg-light">
+  <h2>Contact Me</h2>
+
+  <div class="contact-info">
+    <p><i class="fa-solid fa-envelope"></i> abhinavchandranpk@gmail.com</p>
+    <p><i class="fa-solid fa-phone"></i> +91 7592001450</p>
+
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/abhinavchandranpk/" target="_blank">
+        <i class="fa-brands fa-linkedin"></i>
+      </a>
+      <a href="https://github.com/ABHINAV7592" target="_blank">
+        <i class="fa-brands fa-github"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Abhinav Chandran PK | All Rights Reserved</p>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
